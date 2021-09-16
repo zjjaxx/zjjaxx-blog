@@ -1,6 +1,8 @@
 ---
 title: JavaScript
 tags: javascript
+top_img: ../img/avatar.jpeg
+cover: ../img/avatar.jpeg
 ---
 # JavaScript
 
