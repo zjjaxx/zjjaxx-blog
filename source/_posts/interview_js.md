@@ -1,8 +1,9 @@
 ---
 title: JavaScript
-tags: javascript
-top_img: ../img/avatar.jpeg
-cover: ../img/avatar.jpeg
+categories: js
+tags: javascript基础
+top_img: ../img/interview_js_bg/interview_js_bg.jpg
+cover: ../img/interview_js_bg/interview_js_bg.jpg
 ---
 # JavaScript
 

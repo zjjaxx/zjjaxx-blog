@@ -4,16 +4,24 @@
 
 # Site
 title: 博客
-subtitle: ''
-description: ''
-keywords:
+subtitle: zjjaxx的博客
+description: front blog
+keywords: 
+        - vue
+        - react
+        - webpack
+        - node
+        - html js css
+        - typescript
+        - vite
+        - babel
 author: 剑姬
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://zjjaxx-blog-1givp3ah35a3d9ea-1257320867.ap-shanghai.app.tcloudbase.com/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -23,7 +31,7 @@ pretty_urls:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tag
+tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
@@ -40,7 +48,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
