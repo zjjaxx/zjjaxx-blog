@@ -3,8 +3,8 @@ title: react
 date: 2021-10-07 12:53:51
 categories: react
 tags: react
-top_img: ../img/react.jpeg
-cover: ../img/react.jpeg
+top_img: ../img/react/react.jpeg
+cover: ../img/react/react.jpeg
 ---
 
 # [react](https://react.docschina.org/docs/hello-world.html)
@@ -25,7 +25,7 @@ cover: ../img/react.jpeg
 setState的更新可能是异步的，批量更新，解决的方法是setState第一个参数传入的是一个函数，参数为之前的state
 
 ## 生命周期
-![](./react/live.png)
+{% asset_img live.png This is an example image %}
 - constructor()
 通常，在 React 中，构造函数仅用于以下两种情况：
 
