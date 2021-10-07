@@ -29,21 +29,27 @@ Array.isArray(x)? flatter(x) : x
     },[])
 })(arr)
 ```
-## Promise
+## Promise（期约）
 - 有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）
 - Promise 新建后就会立即执行。
 - 注意，调用resolve或reject并不会终结 Promise 的参数函数的执行。
-- Promise 内部的错误不会影响到 Promise 外部的代码，通俗的说法就是“Promise 会吃掉错误”。
-- catch()方法返回的还是一个 Promise 对象，因此后面还可以接着调用then()方法。
+- Promise 内部的错误不会影响到 Promise 外部的代码，通俗的说法就是“Promise 会吃掉错误”,实际上如果抛出异常，则会返回一个拒绝的期约(Promise.reject(throw new Error()))
 ### 为什么Promise可以链式调用
 then方法返回的是一个新的Promise实例,因此可以采用链式写法，即then方法后面再调用另一个then方法。
+### Promise.resolve可以实例化一个解决的期约，可以把任何值都转化成promise
+- 普通的值或对象，返回一个新的promise
+- 如果传入的参数是个promise,直接返回传入的promise
+### then
+返回值会通过Promise.resolve()来包装，如果then中什么都没传的话，则会通过Promise.resolve()包装上一次返回值，如果没有返回值的话则Prmose.resolve(undefined)
+### catch
+事实上，这个方法就是一个语法糖，调用它就相当于调用Promise.prototype.then(null,onRejected)
 ### finally
+无论是success或则error都执行一遍，与状态无关，然后返回上一次的返回值
 ```
 Promise.prototype.finally = function (callback) {
-  let P = this.constructor;
   return this.then(
-    value  => P.resolve(callback()).then(() => value),
-    reason => P.resolve(callback()).then(() => { throw reason })
+    value  => Promise.resolve(callback()).then(() => value),
+    reason => Promise.resolve(callback()).then(() => { throw reason })
   );
 };
 ```
@@ -53,17 +59,28 @@ Promise.all()方法用于将多个 Promise 实例，包装成一个新的 Promis
 
 Promise.all()方法接受一个数组作为参数，p1、p2、p3都是 Promise 实例，如果不是，就会先调用下面讲到的Promise.resolve方法，将参数转为 Promise 实例，再进一步处理。
 ### Promise.all Promise.race实现
+```
+Promise.all=function(array){
+  let count=0
+  const result=[]
+  const array_promisify=array.map(item=>Promise.resolve(item))
+  return new Promise((resolve,reject)=>{
+      array_promisify.forEach(promise=>{
+        promise.then(res=>{
+          count++
+          result.push(res)
+          if(count>=array.length){
+            resolve(result)
+          }
+        },error=>{
+          reject(error)
+        })
+      })
+  })
+}
+```
 ### 手写实现Promise
-## 常见的状态码
-- 200：这个是最常见的http状态码，表示服务器已经成功接受请求，
-- 301：重定向
-- 304：缓存
-- 400：参数有误
-- 401：未认证
-- 403: 权限不够 
-- 404：请求失败，客户端请求的资源没有找到或者是不存在
-- 500：服务器遇到未知的错误，导致无法完成客户端当前的请求。
-- 503: 服务器超负载
+
 
 ## 如果新建一个对象
 ### 字面量形式
