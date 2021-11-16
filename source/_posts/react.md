@@ -25,7 +25,7 @@ cover: ../img/react/react.jpeg
 setState的更新可能是异步的，批量更新，解决的方法是setState第一个参数传入的是一个函数，参数为之前的state
 
 ## 生命周期
-{% asset_img live.png This is an example image %}
+{% asset_img live.png %}
 - constructor()
 通常，在 React 中，构造函数仅用于以下两种情况：
 
