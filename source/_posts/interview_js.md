@@ -6,7 +6,22 @@ top_img: ../img/interview_js_bg/interview_js_bg.jpg
 cover: ../img/interview_js_bg/interview_js_bg.jpg
 ---
 # JavaScript
+## reduce 
+适用于组合函数
+```
+const compose=(...arg)=>{
+        return arg.reduce((total,fn)=>{
+            return param=> fn(total(param))
+        })
+}
 
+const fns=[1,2,3,4,5].map(item=>(arg)=>{
+    console.log("item is",item,"arg is",arg)
+    return arg+2
+})
+const compose_fn=compose(...fns)
+console.log("compose_fn result is",compose_fn(1))
+```
 ## 数组的展平方式
 方式一：
 ```
