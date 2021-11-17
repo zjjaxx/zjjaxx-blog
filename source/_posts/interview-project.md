@@ -79,4 +79,12 @@ path指源文件，type指依赖包申明
 5. 将嵌套路由表展平
 6. addRoute添加路由
 
+## webpack打包优化
+### 缓存
+cache-group 把node_modules中的依赖单独打包，利于缓存
+filename 使用contenthash
+### 把大的依赖不打包进去，使用cdn引入,配置externals
+### 图片小于40KB用base64处理
+### 打包后的html、css、js进行一个压缩处理
+
 
