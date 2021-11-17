@@ -6,6 +6,15 @@ top_img: ../img/interview_js_bg/interview_js_bg.jpg
 cover: ../img/interview_js_bg/interview_js_bg.jpg
 ---
 # JavaScript
+## 数组遍历的几种方式
+- for 循环
+- for-in 循环：不是循环遍历数组的好方法,它访问的是属性键，而不是值。它访问的是所有可枚举的属性键（自己的和继承的），而不仅仅是 Array 元素的那些。
+- forEach()
+- for-of 循环
+## 变量类型判断
+- typeof
+- instanceof 判断参照对象的prototype属性所指向的对象是否在被行测对象的原型链上
+- Object.prototype.toString.call 返回[object  Number]
 ## reduce 
 适用于组合函数
 ```

@@ -92,7 +92,7 @@ install=(vue)=>{
 ```
 ### router-view原理
 - 获取router中的routes,根据当前的url截取#之后的路径,取出相对应的component,渲染出component
-- 监听hashchange事件，设置当前的url相对应的响应式的值
+- 监听hashchange事件，设置当前的url相对应的响应式的值（hash模式）,监听popstate事件，触发事件为pushState(history模式)
 - 刷新后失效,监听load事件
 
 ### hash模式和history模式（HTML5 模式）的区别
