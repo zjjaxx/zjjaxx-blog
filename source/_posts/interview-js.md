@@ -154,3 +154,9 @@ Object.getPrototypeOf(person)==Person.prototype//true
 1. 盗用父类构造函数
 2. 用寄生式继承实现子类原型设置
 
+## 闭包使用场景
+- 节流和防抖
+- 做些缓存事情
+
+## 常用设计模式
+

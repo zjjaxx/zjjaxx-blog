@@ -41,9 +41,9 @@ vue在patch的时候可以通过key精准的判断2个节点是否是同一个,�
 
 ## vue3.0新特性
 - 静态元素和静态属性跳过patch,优化diff算法
-- 基于proxy的数据响应式，vue 基于defineProperty的数据响应式 会递归data,产生很多闭包，proxy只是在外部套壳，速度更快，内存更少
+- 基于proxy的数据响应式，可以监听到属性的新增和删除,vue2.x 基于defineProperty的数据响应式 会递归data,产生很多闭包，proxy只是在外部套壳，速度更快，内存更少
 - typescript
-- composition api (逻辑复用)
+- composition api (逻辑复用)，解决反复横跳问题
 ## nextTick原理
 vue 当数据发生改变的时候使用的是异步更新,微任务触发nextTick最为合理
 ## 有没有自己封装过组件

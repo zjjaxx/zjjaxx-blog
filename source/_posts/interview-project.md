@@ -86,5 +86,10 @@ filename 使用contenthash
 ### 把大的依赖不打包进去，使用cdn引入,配置externals
 ### 图片小于40KB用base64处理
 ### 打包后的html、css、js进行一个压缩处理
-
+## webpack打包速度优化
+- 使用别名加快目标依赖的搜索
+- loader中exclude node_modules
+- 用 Happypack 来加速代码构建(从单一进程的形式扩展多进程模式)
+- 大的依赖不打包进文件中，采用cdn引入
+- 缓存cache
 
