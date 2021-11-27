@@ -72,3 +72,6 @@ function initP() {
 2. opacity
 3. filters
 4. Will-change
+
+## css import 
+css有一个特别不常用的特性，即@import规则，它允许在一个css文件中导入其他css文件。然而，后果是只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。
