@@ -236,14 +236,14 @@ module.exports = {
   ],
   transform: {
     '^.+\\.vue$': '@vue/vue3-jest', // .vue文件用 vue-jest 处理
-    '^.+\\.js$': 'babel-jest',   // .js或者.jsx用 babel-jest处理 （必须配置 @vue/vue3-jest需要）
+    '^.+\\.js$': 'babel-jest',   // .js或者.jsx用 babel-jest处理 （默认jest 只支持commonjs语法 ,不支持esmodule,使用babel做语法转换）
   }
 }
 ```
 相关依赖
 ```
 jest
-babel-jest //必须配置 @vue/vue3-jest需要
+babel-jest //（默认jest 只支持commonjs语法 ,不支持esmodule,使用babel做语法转换）
 @types/jest  //声明文件
 @vue/vue3-jest //处理vue后缀的文件
 ts-jest //处理ts后缀的文件
