@@ -12,7 +12,7 @@ tags:
 - gulp 打包scss等文件
 - jest 单元测试
 - husky 作为git代码提交规范
-
+- eslint+prettier 代码规范
 ## 管理整个项目包 + 初始化vue3.x+typescript组件库项目 + 预览website项目
 ## 组件库依赖管理 Yarn Workspace 
 Workspace 能更好的统一管理有多个项目的仓库，既可在每个项目下使用独立的 package.json 管理依赖，又可便利的享受一条 yarn 命令安装或者升级所有依赖等。更重要的是可以使多个项目共享同一个 node_modules 目录，提升开发效率和降低磁盘空间占用。
@@ -254,6 +254,53 @@ ts-jest //处理ts后缀的文件
  "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js'",
 ```
 
+## eslint + prettier作为代码规范
+- 首先安装eslint
+- 再执行eslint 初始化 选择好对应的规范配置
+```
+npx eslint --init
+```
+### [eslint-plugin-vue 相关配置项](https://eslint.vuejs.org/user-guide)
+### vscode 相关插件为prettier + eslint
+```
+module.exports = {
+  root: true, // 表明为根结点的eslint配置，不再向上查找
+  env: {
+    browser: true, // 表明在浏览器中直接运行，window等全局变量可以直接调用，不需要申明
+    commonjs: true,
+    es2021: true,  // 直接设置环境为es2021 ,自动设置ecmaVersion 为2021
+  },
+  // 全局变量申明，防止eslint报错
+  globals: {
+    withDefaults: "readonly",
+    defineProps: "readonly",
+  },
+  // extends 申明检查时使用那些规范，可省略eslint-config-
+  extends: [
+    "plugin:vue/base", // 启用正确 ESLint 解析的设置和规则。
+    "plugin:vue/vue3-essential", // 以及防止错误或意外行为的规则。
+    "plugin:vue/vue3-strongly-recommended", // 加上可显着提高代码可读性和/或开发体验的规则。
+    "plugin:vue/vue3-recommended", // 加上强制执行主观社区默认值的规则，以确保一致性。
+    "standard", // eslint-config-standard包 标准语法规范
+    "prettier", // prettier 规范 放在最后覆盖之前的规范
+  ],
+  parser: "vue-eslint-parser",
+  // 解析器配置
+  parserOptions: {
+    ecmaVersion: 12, // es 12 的版本
+    ecmaFeatures: { // 如果您使用 JSX，则需要在 ESLint 配置中启用 JSX。
+      jsx: true,
+    },
+    parser: "@typescript-eslint/parser",
+  },
+  plugins: ["vue", "@typescript-eslint"],
+  // 使用extends中的成套规范，在rules修改部分规范
+  rules: {
+    camelcase: "off",
+    "spaced-comment": "off",
+  },
+};
 
+```
 
 
