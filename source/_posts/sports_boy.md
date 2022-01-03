@@ -11,8 +11,8 @@ tags:
 - vite 打包js、vue等后缀文件
 - gulp 打包scss等文件
 - jest 单元测试
-- husky 作为git代码提交规范
 - eslint+prettier 代码规范
+- husky 添加在每次代码提交前的执行的钩子函数 包括git代码提交规范 eslint代码规范 单元测试
 ## 管理整个项目包 + 初始化vue3.x+typescript组件库项目 + 预览website项目
 ## 组件库依赖管理 Yarn Workspace 
 Workspace 能更好的统一管理有多个项目的仓库，既可在每个项目下使用独立的 package.json 管理依赖，又可便利的享受一条 yarn 命令安装或者升级所有依赖等。更重要的是可以使多个项目共享同一个 node_modules 目录，提升开发效率和降低磁盘空间占用。
@@ -248,11 +248,6 @@ babel-jest //（默认jest 只支持commonjs语法 ,不支持esmodule,使用babe
 @vue/vue3-jest //处理vue后缀的文件
 ts-jest //处理ts后缀的文件
 ```
-## husky git 提交规范
-### 初始化 [代码](https://github.com/zjjaxx/sports_boy/blob/main/scripts/verifyCommit.js)
-```
- "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js'",
-```
 
 ## eslint + prettier作为代码规范
 - 首先安装eslint
@@ -300,6 +295,12 @@ module.exports = {
     "spaced-comment": "off",
   },
 };
+
+```
+## husky
+### 初始化 [代码](https://github.com/zjjaxx/sports_boy/blob/main/scripts/verifyCommit.js)
+```
+  "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js \n yarn run lint \n yarn run start:test '",
 
 ```
 
