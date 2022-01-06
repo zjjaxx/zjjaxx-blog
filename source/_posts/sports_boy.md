@@ -256,7 +256,6 @@ ts-jest //处理ts后缀的文件
 npx eslint --init
 ```
 ### [eslint-plugin-vue 相关配置项](https://eslint.vuejs.org/user-guide)
-### vscode 相关插件为prettier + eslint
 ```
 module.exports = {
   root: true, // 表明为根结点的eslint配置，不再向上查找
@@ -297,11 +296,29 @@ module.exports = {
 };
 
 ```
+### vscode 相关插件为prettier + eslint
+vscode 只会读取项目根节点的.eslintignore
 ## husky
 ### 初始化 [代码](https://github.com/zjjaxx/sports_boy/blob/main/scripts/verifyCommit.js)
 ```
   "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js \n yarn run lint \n yarn run start:test '",
 
 ```
+### lint-staged 每次提交只校验git缓存修改的文件
 
+```
+//...
+    "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js\nyarn run lint-staged\nyarn run start:test'",
+//...
+ "lint-staged":{
+    "packages/sports_boy/src/**/*.{vue,js,ts}":"yarn run lint"
+  },
+```
 
+### prettier 提交时为git缓存修改的文件自动格式化
+```
+ "lint-staged": {
+    //...
+    "packages/sports_boy/src/**/*.{vue,js,ts,css,scss}": "prettier --write"
+  },
+```
