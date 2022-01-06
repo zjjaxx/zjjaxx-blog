@@ -138,7 +138,7 @@ vite 的@vitejs/plugin-legacy不支持库的兼容性打包，使用rollup babel
 @babel/plugin-transform-runtime
 ```
 
-## gulp 打包scss等文件
+## gulp 打包scss等文件 (缺点公共样式会重复，暂未解决)
 为了组件库的按需导入,不能把样式内嵌到vue文件中,需一个组件对应一个样式文件,单独打包
 ### 采用gulp-sass 支持scss打包
 ### 所有的对css处理都放到postcss插件中
