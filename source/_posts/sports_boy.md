@@ -301,14 +301,15 @@ vscode 只会读取项目根节点的.eslintignore
 ## husky
 ### 初始化 [代码](https://github.com/zjjaxx/sports_boy/blob/main/scripts/verifyCommit.js)
 ```
-  "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js \n yarn run lint \n yarn run start:test '",
+  "initHusky": "husky install && husky add .husky/pre-commit 'node scripts/verifyCommit.js \n yarn run lint \n yarn run start:test '",
 
 ```
+注意：husky 的文件名必须为`pre-commit`,否则`lint-staged`自动`git add `到`commit`会有问题
 ### lint-staged 每次提交只校验git缓存修改的文件
 
 ```
 //...
-    "initHusky": "husky install && husky add .husky/commit-msg 'node scripts/verifyCommit.js\nyarn run lint-staged\nyarn run start:test'",
+    "initHusky": "husky install && husky add .husky/pre-commit 'node scripts/verifyCommit.js\nyarn run lint-staged\nyarn run start:test'",
 //...
  "lint-staged":{
     "packages/sports_boy/src/**/*.{vue,js,ts}":"yarn run lint"
@@ -322,3 +323,4 @@ vscode 只会读取项目根节点的.eslintignore
     "packages/sports_boy/src/**/*.{vue,js,ts,css,scss}": "prettier --write"
   },
 ```
+
